@@ -1,0 +1,25 @@
+﻿@page "/counter"
+@rendermode InteractiveServer
+@using BlazorWebAppStateManagement.GlobalStates
+@inject MessageState messageState
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+<h1>Message: @messageState.Message</h1>
+
+
+<button @onclick="SetMessage">Set Message</button>
+<button @onclick="ClearMessage">Clear Message</button>
+
+@code {
+    void SetMessage()
+    {
+        string message = "Hello Welcome to my Channel from counter";
+        messageState.SetMessage(message);
+    }
+    void ClearMessage()
+    {
+        messageState.ClearMessage();
+    }
+}
+}

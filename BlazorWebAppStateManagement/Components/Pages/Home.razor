@@ -1,0 +1,28 @@
+﻿@page "/"
+@rendermode InteractiveServer
+@using BlazorWebAppStateManagement.GlobalStates
+@inject MessageState messageState
+<PageTitle>Home</PageTitle>
+
+<h1>This is the Output: @messageState.Message</h1>
+
+<h1>Local State Management</h1>
+<br/>
+<br/>
+<input type="text" class="form-control" @bind-value="@messageState.Message" />
+
+<button @onclick="SetMessage">Set Message</button>
+<button @onclick="ClearMessage">Clear Message</button>
+@code{
+    string Message;
+
+    void SetMessage()
+    {
+        string message = "Hello Welcome to my Channel";
+        messageState.SetMessage(message);
+    }
+    void ClearMessage()
+    {
+        messageState.ClearMessage();
+    }
+}
